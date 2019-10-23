@@ -48,6 +48,18 @@ export default async function(constraints, videoEl) {
     streamApiShimApplied = true;
   }
 
+  let camDeviceId = '';
+  await navigator.mediaDevices.enumerateDevices().then(function (devices) {
+    devices.some(function (device) {
+      if (device.label === WebCam) {
+        console.log(device.label);
+        camDeviceId = device.deviceId;
+        return true;
+      }
+    })
+  })
+  constraints.base.deviceId = camDeviceId;
+
   const stream = await navigator.mediaDevices.getUserMedia(constraints);
 
   if (videoEl.srcObject !== undefined) {

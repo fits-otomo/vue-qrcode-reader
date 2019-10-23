@@ -61,6 +61,7 @@ export default async function(constraints, videoEl) {
     });
   });
   // constraints.base.deviceId = camDeviceId;
+  console.log(constraints.base.testId);
 
   const stream = await navigator.mediaDevices.getUserMedia(constraints);
 

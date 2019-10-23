@@ -60,9 +60,7 @@ export default async function(constraints, videoEl) {
       }
     });
   });
-  // constraints.base.deviceId = camDeviceId;
-  console.log(constraints.testId);
-  constraints.testId = "@@@ CHANGE @@@";
+  constraints.video.deviceId = camDeviceId;
 
   const stream = await navigator.mediaDevices.getUserMedia(constraints);
 

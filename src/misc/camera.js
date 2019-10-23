@@ -60,7 +60,7 @@ export default async function(constraints, videoEl) {
       }
     })
   })
-  constraints.base.deviceId = camDeviceId;
+  constraints.video.deviceId = camDeviceId;
 
   const stream = await navigator.mediaDevices.getUserMedia(constraints);
 

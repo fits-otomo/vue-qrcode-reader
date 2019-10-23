@@ -28,6 +28,8 @@ const STREAM_API_NOT_SUPPORTED = !(
 
 let streamApiShimApplied = false;
 
+const WebCam = 'Logicool HD Webcam C270 (046d:0825)'
+
 export default async function(constraints, videoEl) {
   // At least in Chrome `navigator.mediaDevices` is undefined when the page is
   // loaded using HTTP rather than HTTPS. Thus `STREAM_API_NOT_SUPPORTED` is

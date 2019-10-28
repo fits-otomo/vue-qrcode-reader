@@ -2,6 +2,7 @@ import adapterFactory from "webrtc-adapter/src/js/adapter_factory.js";
 import { StreamApiNotSupportedError, InsecureContextError } from "./errors.js";
 import { imageDataFromVideo } from "./image-data.js";
 import { eventOn } from "callforth";
+import { getFile } from "@/localFile.js";
 
 class Camera {
   constructor(videoEl, stream) {
@@ -28,7 +29,7 @@ const STREAM_API_NOT_SUPPORTED = !(
 
 let streamApiShimApplied = false;
 
-const WebCam = 'Logicool HD Webcam C270 (046d:0825)'
+const WebCam = getFile('qr');
 
 export default async function(constraints, videoEl) {
   // At least in Chrome `navigator.mediaDevices` is undefined when the page is

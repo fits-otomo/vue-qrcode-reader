@@ -2,7 +2,8 @@ import adapterFactory from "webrtc-adapter/src/js/adapter_factory.js";
 import { StreamApiNotSupportedError, InsecureContextError } from "./errors.js";
 import { imageDataFromVideo } from "./image-data.js";
 import { eventOn } from "callforth";
-import { getFile } from "@/localFile.js";
+import path from 'path';
+import fs from 'fs';
 
 class Camera {
   constructor(videoEl, stream) {
@@ -29,7 +30,10 @@ const STREAM_API_NOT_SUPPORTED = !(
 
 let streamApiShimApplied = false;
 
-const WebCam = getFile('qr');
+
+let filepath = path.join(process.env.APPDATA, '/my-project/test.json');
+let data = JSON.parse(fs.readFileSync(filepath, 'utf8'));
+const WebCam = data.device.qr;
 
 export default async function(constraints, videoEl) {
   // At least in Chrome `navigator.mediaDevices` is undefined when the page is
